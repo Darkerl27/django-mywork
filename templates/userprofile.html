@@ -1,0 +1,47 @@
+{%extends 'base.html'%}
+{%load static%}
+
+
+{%block profile%}
+      {%if user.is_authenticated%}
+<h1 align="center">User Profile</h1>
+<br/>
+
+<div class="card" style="max-width:540px;">
+
+    <div class="row no-gutters">
+        <div class="col-md-4">
+             {% if object.photo %}
+                  <img src="{{user.photo.url}}" style="padding:5px 5px;" class="rounded-top" width="120">
+        {% else %}
+              <img src="{%static 'images/default/user.png'%}" style="padding:5px 5px;" class="rounded-top" width="120">
+        {% endif %}
+
+        </div>
+        <div class="col-md-8">
+        <div class="card-body">
+             <strong>Username:</strong> {{object.name}}
+            <br/>
+            <strong>Name:</strong> {{object.name}}
+            <br/>
+            <strong>Surname:</strong> {{object.surname}}
+            <br/>
+
+            <strong>Age:</strong> {{object.age}}
+              <br/>
+            <strong>Bio:</strong> {{object.bio}}
+
+        </div>
+    </div>
+
+
+    </div>
+
+</div>
+
+{%else%}
+<h1 class="text-danger">Your are not authenticated</h1><a href="{%url 'login'%}">Login</a>
+{%endif%}
+
+{%endblock%}
+

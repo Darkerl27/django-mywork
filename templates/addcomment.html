@@ -1,0 +1,14 @@
+{%extends 'base.html'%}
+
+{%block content%}
+      {%if user.is_authenticated%}
+<h2>Add Comment</h2>
+<form method="post">
+{%csrf_token%}
+{{form.as_p}}
+<button type="submit" class="btn btn-primary">Create</button>
+</form>
+{%else%}
+<h1 class="text-danger">Your are not authenticated </h1><a href="{%url 'login'%}">Login</a>
+{%endif%}
+{%endblock%}

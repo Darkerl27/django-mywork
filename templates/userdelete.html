@@ -1,0 +1,14 @@
+{%extends 'base.html'%}
+
+{%block content%}
+      {%if user.is_authenticated%}
+<h2>Delete User</h2>
+<form method="post">
+{%csrf_token%}
+Are you sure for delete,  {{user.username}}?
+<button type="submit" class="btn btn-danger">Delete</button>
+</form>
+{%else%}
+<h1 class="text-danger">Your are not authenticated</h1><a href="{%url 'login'%}">Login</a>
+{%endif%}
+{%endblock%}
